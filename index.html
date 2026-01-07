@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkupAudit v2.0</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Load jsPDF from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- GLOBAL NAVIGATION -->
+    <nav id="global-nav" class="navbar">
+        <div class="nav-container">
+            <div class="logo-area" id="nav-logo">
+                <h1>MarkupAudit <span class="version-badge">v2.0</span></h1>
+            </div>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="btn icon-btn" aria-label="Toggle Dark Mode">
+                    <!-- Moon Icon (Default) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div id="nav-actions">
+                    <!-- Buttons handled by JS -->
+                    <button id="landing-start-btn" class="btn primary small-btn">Start Audit</button>
+                    <button id="new-audit-btn" class="btn success hidden">New Audit</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LANDING VIEW -->
+    <div id="landing-view">
+        <!-- Header Removed -->
+
+
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Audit HTML structure and accessibility against modern web standards.</h2>
+                <p class="hero-subtext">Identify semantic, structural, and accessibility issues in your markup with a
+                    human-readable report.</p>
+                <button id="hero-cta-btn" class="btn primary large-btn">Start Audit</button>
+            </div>
+        </section>
+
+        <!-- Features & Steps (Kept for completeness) -->
+        <section class="features-section">
+            <div class="container-small">
+                <h3>What MarkupAudit Checks</h3>
+                <ul class="check-list">
+                    <li>
+                        <span class="icon teal">&lt;&gt;</span>
+                        <span>Semantic HTML structure</span>
+                    </li>
+                    <li>
+                        <span class="icon teal">≡</span>
+                        <span>Heading hierarchy</span>
+                    </li>
+                    <li>
+                        <span class="icon teal">&lt;&gt;</span>
+                        <span>Landmark elements (main, nav, header, footer)</span>
+                    </li>
+                    <li>
+                        <span class="icon green">✓</span>
+                        <span>Form accessibility issues</span>
+                    </li>
+                    <li>
+                        <span class="icon green">✓</span>
+                        <span>WCAG-aligned warnings</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="steps-section">
+            <div class="container-small">
+                <h3>How It Works</h3>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-badge">1</div>
+                        <div class="step-icon">📄</div>
+                        <p>Paste HTML or upload a file</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-badge">2</div>
+                        <div class="step-icon">▶️</div>
+                        <p>Run the audit</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-badge">3</div>
+                        <div class="step-icon">📋</div>
+                        <p>Review a human-readable report</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-section">
+            <div class="container-small">
+                <div class="trust-badge">
+                    <span class="trust-icon">🛡️</span>
+                    <div class="trust-text">
+                        <h4>Runs locally in the browser</h4>
+                        <p>No code is stored or uploaded</p>
+                        <p>Built with web standards in mind (WCAG / W3C)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="landing-footer">
+            <div class="container-footer">
+                <div class="footer-left">
+                    <span class="text-muted">v2.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="#" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" class="footer-link">
+                        WCAG Reference
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- MAIN APP VIEW -->
+    <div id="app-view" class="hidden">
+        <main class="container">
+            <!-- HEADER REMOVED (Moved to Global Nav) -->
+
+            <!-- INPUT SECTION -->
+            <section id="input-section" class="card fade-in">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="raw">Raw HTML</button>
+                    <button class="tab-btn" data-tab="url">URL</button>
+                    <button class="tab-btn" data-tab="file">Upload File</button>
+                </div>
+
+                <div class="tab-content" id="tab-raw">
+                    <div class="input-group">
+                        <label for="html-input">Paste your HTML code below:</label>
+                        <textarea id="html-input" placeholder="&lt;!DOCTYPE html&gt;..."></textarea>
+                    </div>
+                </div>
+
+                <div class="tab-content hidden" id="tab-url">
+                    <div class="input-group">
+                        <label for="url-input">Enter Website URL:</label>
+                        <div>
+                            <input type="url" id="url-input" placeholder="https://example.com">
+                        </div>
+                        <p class="hint">Note: Many sites block client-side access (CORS). If this fails, paste the
+                            source
+                            code instead.</p>
+                    </div>
+                </div>
+
+                <div class="tab-content hidden" id="tab-file">
+                    <div class="input-group">
+                        <label for="file-input">Upload .html File:</label>
+                        <div class="file-drop-area" id="drop-area">
+                            <p>Click to upload or drag and drop</p>
+                            <input type="file" id="file-input" accept=".html">
+                            <span id="file-name" class="file-name"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-bar">
+                    <button id="load-sample-btn" class="text-link">Load Sample</button>
+                    <div class="main-actions">
+                        <button id="clear-btn" class="btn secondary">Clear</button>
+                        <button id="run-audit-btn" class="btn primary">Run Audit</button>
+                    </div>
+                </div>
+
+                <div id="error-message" class="error-banner hidden"
+                    style="margin-top:1rem; color:var(--severity-critical-text);"></div>
+            </section>
+
+            <!-- LOADING OVERLAY -->
+            <div id="loading-overlay" class="loading-overlay hidden">
+                <div class="jumping-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <p>Analyzing markup...</p>
+            </div>
+
+            <!-- RESULTS SECTION -->
+            <section id="results-section" class="hidden fade-in">
+
+                <!-- OVERALL SCORE CARD -->
+                <div class="score-dashboard">
+                    <div class="overall-score-card">
+                        <div class="score-circle" id="overall-score-circle">
+                            <span id="overall-score-value">0</span>
+                        </div>
+                        <h2>Overall Score</h2>
+                    </div>
+                    <div class="category-scores" id="category-scores-container">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+
+                <div class="report-meta">
+                    <span id="meta-date"></span>
+                    <span id="meta-length"></span>
+                    <span id="meta-source"></span>
+                </div>
+
+                <div class="report-actions">
+                    <button id="export-pdf-btn" class="btn primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export PDF
+                    </button>
+                </div>
+
+                <div id="report-container">
+                    <!-- Report Cards Injected Here -->
+                </div>
+            </section>
+        </main>
+
+        <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
