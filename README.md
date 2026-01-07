@@ -37,6 +37,11 @@ issues related to semantic structure, accessibility, and markup hygiene.
 
 ---
 
+## Example Audit
+
+- [Sample HTML Input](docs/sample-input.html)
+- [Sample Audit Report](docs/sample-report.md)
+
 ## Live Demo
 
 Deployment coming soon.
