@@ -67,3 +67,7 @@ principles and semantic HTML best practices.
 ## License
 
 MIT License
+
+Copyright (c) 2026 Nathaniel Kings
+
+Permission is hereby granted, free of charge, ...
